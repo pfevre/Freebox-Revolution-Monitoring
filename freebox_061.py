@@ -655,13 +655,14 @@ def get_and_print_metrics(creds, s_switch, s_ports, s_sys, s_disk, s_lan, s_wifi
                     if 'has_dect' in sys_json_raw['result']['model_info']:my_data[tag1+"."+tag2+"."+tag3+"."+'has_dect'] = sys_json_raw['result']['model_info']['has_dect']
 
             if 'fans' in sys_json_raw['result']: # c'est une liste
-                i=1
+                i = 0
                 for fan_object in sys_json_raw['result']['fans']:
                     tag2 = "Fan"
+                    tag3 = str(i)
                     my_data[tag1+"."+tag2+"."+tag3+"."+'id'] = fan_object['id']
                     my_data[tag1+"."+tag2+"."+tag3+"."+'name'] = fan_object['name']
                     my_data[tag1+"."+tag2+"."+tag3+"."+'value'] = fan_object['value']
-                    i=i+1
+                    i = i+1
 
             if 'sensors' in sys_json_raw['result']: # c'est une liste
                 i=1
